@@ -1,0 +1,19 @@
+parameters:
+    demontpx_parsedown.breaks_enabled: false
+    demontpx_parsedown.markup_escaped: false
+    demontpx_parsedown.urls_linked: true
+
+services:
+    demontpx_parsedown.parsedown:
+        class: Parsedown
+        calls:
+            - [setBreaksEnabled, [%demontpx_parsedown.breaks_enabled%]]
+            - [setMarkupEscaped, [%demontpx_parsedown.markup_escaped%]]
+            - [setUrlsLinked, [%demontpx_parsedown.urls_linked%]]
+
+    demontpx_parsedown.twig.extension.parsedown:
+        class: Demontpx\ParsedownBundle\Twig\ParsedownExtension
+        arguments:
+            - @demontpx_parsedown.parsedown
+        tags:
+            - { name: twig.extension }
