@@ -2,3 +2,5 @@ demontpx_parsedown_parse:
   path:     /
   defaults: { _controller: demontpx_parsedown.controller:parseAction }
   methods:  [POST]
+  options:
+    expose: true
