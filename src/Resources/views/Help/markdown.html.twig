@@ -1,0 +1,84 @@
+{% macro help(input, output)  %}
+<div class="row">
+    <div class="col-md-6">
+        <pre><code>{{ input }}</code></pre>
+    </div>
+    <div class="col-md-6">
+        {% if output is null %}
+            {{ input|markdown }}
+        {% else %}
+            {{ output }}
+        {% endif %}
+    </div>
+</div>
+{% endmacro %}
+
+{% import _self as md %}
+
+<h3>Headers</h3>
+
+{{ md.help('# This is big header
+## This is smaller header
+###### This is the smallest header') }}
+
+<h3>Emphasis</h3>
+
+{{ md.help('*This text will be italic*
+_This will also be italic_
+
+**This text will be bold**
+__This will also be bold__
+
+~~This text will be crossed out~~
+
+_You **can** ~~combine~~ them_') }}
+
+<h3>Lists</h3>
+<h4>Unordered</h4>
+
+{{ md.help('* Item 1
+* Item 2
+* Item 2a
+* Item 2b') }}
+
+<h4>Ordered</h4>
+
+{{ md.help('1. Item 1
+2. Item 2
+3. Item 3
+   * Item 3a
+   * Item 3b') }}
+
+<h4>Images</h4>
+
+{{ md.help('![Some image](/images/logo.png)
+Format: ![Alt Text](http://example.com/link-to-image.png)', '') }}
+
+<h4>Links</h4>
+
+{{ md.help('http://demontpx.com - automatic!
+[DemonTPx](http://demontpx.com)') }}
+
+<h4>Blockquotes</h4>
+
+{{ md.help('As Richard Dawkins said:
+
+> The solution often turns out
+> more beautiful than the puzzle.') }}
+
+<h4>Inline code</h4>
+
+{{ md.help('I think we should never
+use `<blink>` ever again.') }}
+
+<h4>Tables</h4>
+
+{{ md.help('First Header | Second Header
+------------ | -------------
+Content from cell 1 | Content from cell 2
+Content in the first column | Content in the second column') }}
+
+{{ md.help('| Left-Aligned  | Center Aligned  | Right Aligned |
+| :------------ |:---------------:| -----:|
+| col 3 is      | some wordy text | $1600 |
+| col 2 is      | centered        |   $12 |') }}
