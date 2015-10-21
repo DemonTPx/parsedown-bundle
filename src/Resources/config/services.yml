@@ -11,6 +11,11 @@ services:
             - [setMarkupEscaped, [%demontpx_parsedown.markup_escaped%]]
             - [setUrlsLinked, [%demontpx_parsedown.urls_linked%]]
 
+    demontpx_parsedown.controller:
+        class: Demontpx\ParsedownBundle\Controller\ParsedownController
+        arguments:
+            - @demontpx_parsedown.parsedown
+
     demontpx_parsedown.twig.extension.parsedown:
         class: Demontpx\ParsedownBundle\Twig\ParsedownExtension
         arguments:
