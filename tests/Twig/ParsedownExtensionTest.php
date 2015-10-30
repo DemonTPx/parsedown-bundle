@@ -37,6 +37,22 @@ class ParsedownExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($parsedText, $result);
     }
 
+    public function testStrip()
+    {
+        $text = 'Some *random* text';
+        $parsedText = 'Some <em>random</em> text';
+        $expectedResult = 'Some random text';
+
+        $this->parsedown->expects($this->once())
+            ->method('text')
+            ->with($text)
+            ->willReturn($parsedText);
+
+        $result = $this->extension->strip($text);
+
+        $this->assertSame($expectedResult, $result);
+    }
+
     public function testGetFilters()
     {
         $expectedResult = [

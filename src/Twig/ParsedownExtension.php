@@ -28,6 +28,7 @@ class ParsedownExtension extends \Twig_Extension
     {
         return [
             new \Twig_SimpleFilter('markdown', [$this, 'parsedown'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFilter('strip_markdown', [$this, 'strip'], ['is_safe' => ['html']]),
         ];
     }
 
@@ -39,6 +40,16 @@ class ParsedownExtension extends \Twig_Extension
     public function parsedown($text)
     {
         return $this->parser->text($text);
+    }
+
+    /**
+     * @param string $text
+     *
+     * @return string
+     */
+    public function strip($text)
+    {
+        return strip_tags($this->parser->text($text));
     }
 
     /**
