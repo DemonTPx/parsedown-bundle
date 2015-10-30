@@ -5,7 +5,7 @@ parameters:
 
 services:
     demontpx_parsedown.parsedown:
-        class: \Demontpx\ParsedownBundle\Parsedown
+        class: Demontpx\ParsedownBundle\Parsedown
         calls:
             - [setBreaksEnabled, [%demontpx_parsedown.breaks_enabled%]]
             - [setMarkupEscaped, [%demontpx_parsedown.markup_escaped%]]
