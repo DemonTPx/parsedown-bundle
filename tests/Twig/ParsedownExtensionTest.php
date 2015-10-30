@@ -2,6 +2,8 @@
 
 namespace Demontpx\ParsedownBundle\Twig;
 
+use Demontpx\ParsedownBundle\Parsedown;
+
 /**
  * Class ParsedownExtensionTest
  *
@@ -13,7 +15,7 @@ class ParsedownExtensionTest extends \PHPUnit_Framework_TestCase
     /** @var ParsedownExtension */
     private $extension;
 
-    /** @var \PHPUnit_Framework_MockObject_MockObject|\Parsedown */
+    /** @var \PHPUnit_Framework_MockObject_MockObject|Parsedown */
     private $parsedown;
 
     protected function setUp()
@@ -39,24 +41,24 @@ class ParsedownExtensionTest extends \PHPUnit_Framework_TestCase
 
     public function testStrip()
     {
-        $text = 'Some *random* text';
-        $parsedText = 'Some <em>random</em> text';
-        $expectedResult = 'Some random text';
+        $text = '__Some__ *random* text';
+        $strippedText = 'Some random text';
 
         $this->parsedown->expects($this->once())
-            ->method('text')
+            ->method('strip')
             ->with($text)
-            ->willReturn($parsedText);
+            ->willReturn($strippedText);
 
         $result = $this->extension->strip($text);
 
-        $this->assertSame($expectedResult, $result);
+        $this->assertSame($strippedText, $result);
     }
 
     public function testGetFilters()
     {
         $expectedResult = [
             new \Twig_SimpleFilter('markdown', [$this->extension, 'parsedown'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFilter('strip_markdown', [$this->extension, 'strip'], ['is_safe' => ['html']]),
         ];
 
         $this->assertEquals($expectedResult, $this->extension->getFilters());
@@ -69,11 +71,11 @@ class ParsedownExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\Parsedown
+     * @return \PHPUnit_Framework_MockObject_MockObject|Parsedown
      */
     public function createMockParsedown()
     {
-        return $this->getMockBuilder('Parsedown')
+        return $this->getMockBuilder('\Demontpx\ParsedownBundle\Parsedown')
             ->disableOriginalConstructor()
             ->getMock();
     }

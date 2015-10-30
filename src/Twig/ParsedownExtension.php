@@ -2,6 +2,8 @@
 
 namespace Demontpx\ParsedownBundle\Twig;
 
+use Demontpx\ParsedownBundle\Parsedown;
+
 /**
  * Class ParsedownExtension
  *
@@ -10,13 +12,13 @@ namespace Demontpx\ParsedownBundle\Twig;
  */
 class ParsedownExtension extends \Twig_Extension
 {
-    /** @var \Parsedown */
+    /** @var Parsedown */
     private $parser;
 
     /**
-     * @param \Parsedown $parser
+     * @param Parsedown $parser
      */
-    public function __construct(\Parsedown $parser)
+    public function __construct(Parsedown $parser)
     {
         $this->parser = $parser;
     }
@@ -49,7 +51,7 @@ class ParsedownExtension extends \Twig_Extension
      */
     public function strip($text)
     {
-        return strip_tags($this->parser->text($text));
+        return $this->parser->strip($text);
     }
 
     /**
