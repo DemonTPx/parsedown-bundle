@@ -17,6 +17,6 @@ class Parsedown extends \Parsedown
      */
     public function strip($text)
     {
-        return strip_tags($this->text($text));
+        return html_entity_decode(strip_tags($this->text($text)), null, 'UTF-8');
     }
 }
