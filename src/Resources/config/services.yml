@@ -14,11 +14,11 @@ services:
     demontpx_parsedown.controller:
         class: Demontpx\ParsedownBundle\Controller\ParsedownController
         arguments:
-            - @demontpx_parsedown.parsedown
+            - "@demontpx_parsedown.parsedown"
 
     demontpx_parsedown.twig.extension.parsedown:
         class: Demontpx\ParsedownBundle\Twig\ParsedownExtension
         arguments:
-            - @demontpx_parsedown.parsedown
+            - "@demontpx_parsedown.parsedown"
         tags:
             - { name: twig.extension }
