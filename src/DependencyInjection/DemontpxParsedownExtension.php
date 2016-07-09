@@ -15,9 +15,6 @@ use Symfony\Component\DependencyInjection\Loader;
  */
 class DemontpxParsedownExtension extends Extension
 {
-    /**
-     * {@inheritdoc}
-     */
     public function load(array $configs, ContainerBuilder $container)
     {
         $configuration = new Configuration();

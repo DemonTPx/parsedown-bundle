@@ -7,9 +7,9 @@ services:
     demontpx_parsedown.parsedown:
         class: Demontpx\ParsedownBundle\Parsedown
         calls:
-            - [setBreaksEnabled, [%demontpx_parsedown.breaks_enabled%]]
-            - [setMarkupEscaped, [%demontpx_parsedown.markup_escaped%]]
-            - [setUrlsLinked, [%demontpx_parsedown.urls_linked%]]
+            - ["setBreaksEnabled", ["%demontpx_parsedown.breaks_enabled%"]]
+            - ["setMarkupEscaped", ["%demontpx_parsedown.markup_escaped%"]]
+            - ["setUrlsLinked", ["%demontpx_parsedown.urls_linked%"]]
 
     demontpx_parsedown.controller:
         class: Demontpx\ParsedownBundle\Controller\ParsedownController

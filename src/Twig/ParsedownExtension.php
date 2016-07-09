@@ -23,9 +23,6 @@ class ParsedownExtension extends \Twig_Extension
         $this->parser = $parser;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function getFilters()
     {
         return [
@@ -54,9 +51,6 @@ class ParsedownExtension extends \Twig_Extension
         return $this->parser->strip($text);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function getName()
     {
         return 'demontpx_parsedown';
