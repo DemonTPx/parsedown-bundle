@@ -2,8 +2,8 @@
     "name": "demontpx/parsedown-bundle",
     "license": "MIT",
     "type": "symfony-bundle",
-    "description": "Parsedown (markdown) bundle for Symfony2",
-    "keywords": ["markdown", "parsedown", "md", "symfony2", "bundle"],
+    "description": "Parsedown (markdown) bundle for Symfony",
+    "keywords": ["markdown", "parsedown", "md", "symfony", "bundle"],
     "autoload": {
         "psr-4": { "Demontpx\\ParsedownBundle\\": "src/" }
     },

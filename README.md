@@ -1,13 +1,13 @@
-# Parsedown bundle for Symfony2
+# Parsedown bundle for Symfony
 
-Provides the parsedown service and twig filter for Symfony2
+Provides the parsedown service and twig filter for Symfony
 
 ## Installation
 
 Require the bundle using composer:
 
 ```bash
-composer require demontpx/parsedown-bundle ^1.1
+composer require demontpx/parsedown-bundle ^1.2
 ```
 
 Then add it to your bundles section in `AppKernel.php`:
