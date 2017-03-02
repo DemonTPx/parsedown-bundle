@@ -10,12 +10,7 @@ namespace Demontpx\ParsedownBundle;
  */
 class Parsedown extends \Parsedown
 {
-    /**
-     * @param string $text
-     *
-     * @return string
-     */
-    public function strip($text)
+    public function strip(string $text): string
     {
         return html_entity_decode(strip_tags($this->text($text)), ENT_QUOTES | ENT_HTML5, 'UTF-8');
     }

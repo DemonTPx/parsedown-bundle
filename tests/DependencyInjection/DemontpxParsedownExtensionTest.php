@@ -2,6 +2,7 @@
 
 namespace Demontpx\ParsedownBundle\DependencyInjection;
 
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
@@ -10,7 +11,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  * @author    Bert Hekman <demontpx@gmail.com>
  * @copyright 2015 Bert Hekman
  */
-class DemontpxParsedownExtensionTest extends \PHPUnit_Framework_TestCase 
+class DemontpxParsedownExtensionTest extends TestCase
 {
     public function testRoot()
     {

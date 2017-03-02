@@ -2,7 +2,10 @@
 
 namespace Demontpx\ParsedownBundle\Controller;
 
+use Mockery\Mock;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class ParsedownControllerTest
@@ -10,50 +13,30 @@ use Symfony\Component\HttpFoundation\Request;
  * @author    Bert Hekman <demontpx@gmail.com>
  * @copyright 2015 Bert Hekman
  */
-class ParsedownControllerTest extends \PHPUnit_Framework_TestCase 
+class ParsedownControllerTest extends TestCase
 {
     public function test()
     {
-        $parsedown = $this->createMockParsedown();
+        /** @var Mock|\Parsedown $parsedown */
+        $parsedown = \Mockery::mock(\Parsedown::class);
 
         $controller = new ParsedownController($parsedown);
 
         $content = 'This is some unparsed content!';
         $parsedContent = '<p>This is some parsed content!</p>';
 
-        $request = $this->createMockRequest();
-        $request->expects($this->any())
-            ->method('getContent')
-            ->willReturn($content);
+        /** @var Mock|Request $request */
+        $request = \Mockery::mock(Request::class);
+        $request->shouldReceive('getContent')
+            ->andReturn($content);
 
-        $parsedown->expects($this->once())
-            ->method('text')
+        $parsedown->shouldReceive('text')
             ->with($content)
-            ->willReturn($parsedContent);
+            ->andReturn($parsedContent);
 
         $result = $controller->parseAction($request);
 
-        $this->assertInstanceOf('Symfony\Component\HttpFoundation\Response', $result);
+        $this->assertInstanceOf(Response::class, $result);
         $this->assertSame($parsedContent, $result->getContent());
-    }
-
-    /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\Parsedown
-     */
-    public function createMockParsedown()
-    {
-        return $this->getMockBuilder('Parsedown')
-            ->disableOriginalConstructor()
-            ->getMock();
-    }
-
-    /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|Request
-     */
-    public function createMockRequest()
-    {
-        return $this->getMockBuilder('Symfony\Component\HttpFoundation\Request')
-            ->disableOriginalConstructor()
-            ->getMock();
     }
 }

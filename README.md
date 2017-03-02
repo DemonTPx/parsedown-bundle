@@ -7,7 +7,7 @@ Provides the parsedown service and twig filter for Symfony
 Require the bundle using composer:
 
 ```bash
-composer require demontpx/parsedown-bundle ^1.2
+composer require demontpx/parsedown-bundle ^1.3
 ```
 
 Then add it to your bundles section in `AppKernel.php`:

@@ -16,20 +16,12 @@ class ParsedownController
     /** @var \Parsedown */
     private $parsedown;
 
-    /**
-     * @param \Parsedown $parsedown
-     */
     public function __construct(\Parsedown $parsedown)
     {
         $this->parsedown = $parsedown;
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return Response
-     */
-    public function parseAction(Request $request)
+    public function parseAction(Request $request): Response
     {
         $parsed = $this->parsedown->text($request->getContent());
 
