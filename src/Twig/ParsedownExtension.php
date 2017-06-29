@@ -23,8 +23,8 @@ class ParsedownExtension extends \Twig_Extension
     public function getFilters()
     {
         return [
-            new \Twig_SimpleFilter('markdown', [$this->parser, 'text'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFilter('strip_markdown', [$this->parser, 'strip'], ['is_safe' => ['html']]),
+            new \Twig_Filter('markdown', [$this->parser, 'text'], ['is_safe' => ['html']]),
+            new \Twig_Filter('strip_markdown', [$this->parser, 'strip'], ['is_safe' => ['html']]),
         ];
     }
 }
