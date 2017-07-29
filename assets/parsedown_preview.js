@@ -1,10 +1,12 @@
-class ParsedownPreview {
+export default class ParsedownPreview {
     constructor(element) {
         const data = element.dataset;
 
         this.url = data.url;
         this.input = element.querySelector(data.input || 'textarea');
         this.preview = element.querySelector(data.preview || '.preview');
+
+        this.preFetchCallbacks = [];
 
         const trigger = element.querySelector(data.trigger || '.trigger');
         if (trigger) {
@@ -13,6 +15,12 @@ class ParsedownPreview {
     }
 
     loadPreview() {
+        for (let callback of this.preFetchCallbacks) {
+            callback(this.input);
+        }
+
+        this.preview.innerHTML = '<div align="center"><i class="fa fa-spinner fa-spin fa-4x"></i></div>';
+
         fetch(this.url, {
             method: 'post',
             body: this.input.value
@@ -28,7 +36,8 @@ class ParsedownPreview {
             })
 
     }
-}
 
-// export default ParsedownPreview;
-module.exports = ParsedownPreview;
+    addPreFetchCallback(callback) {
+        this.preFetchCallbacks.push(callback);
+    }
+}
