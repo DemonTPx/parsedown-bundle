@@ -7,9 +7,6 @@ use Mockery\Mock;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class ParsedownExtensionTest
- *
- * @author    Bert Hekman <demontpx@gmail.com>
  * @copyright 2015 Bert Hekman
  */
 class ParsedownExtensionTest extends TestCase
@@ -29,8 +26,8 @@ class ParsedownExtensionTest extends TestCase
     public function testGetFilters()
     {
         $expectedResult = [
-            new \Twig_SimpleFilter('markdown', [$this->parsedown, 'text'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFilter('strip_markdown', [$this->parsedown, 'strip'], ['is_safe' => ['html']]),
+            new \Twig_Filter('markdown', [$this->parsedown, 'text'], ['is_safe' => ['html']]),
+            new \Twig_Filter('strip_markdown', [$this->parsedown, 'strip'], ['is_safe' => ['html']]),
         ];
 
         $this->assertEquals($expectedResult, $this->extension->getFilters());

@@ -6,9 +6,6 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
- * Class DemontpxParsedownExtensionTest
- *
- * @author    Bert Hekman <demontpx@gmail.com>
  * @copyright 2015 Bert Hekman
  */
 class DemontpxParsedownExtensionTest extends TestCase
@@ -23,9 +20,15 @@ class DemontpxParsedownExtensionTest extends TestCase
         $extension->load($configs, $container = new ContainerBuilder());
 
         foreach (array_keys($container->getDefinitions()) as $name) {
+            if ($name == 'service_container') {
+                continue;
+            }
             $this->assertStringStartsWith($root, $name);
         }
         foreach (array_keys($container->getAliases()) as $name) {
+            if (strpos($name, '\\') !== -1) {
+                continue;
+            }
             $this->assertStringStartsWith($root, $name);
         }
         foreach (array_keys($container->getParameterBag()->all()) as $name) {

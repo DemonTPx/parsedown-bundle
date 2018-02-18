@@ -3,9 +3,6 @@
 namespace Demontpx\ParsedownBundle;
 
 /**
- * Class Parsedown
- *
- * @author    Bert Hekman <demontpx@gmail.com>
  * @copyright 2015 Bert Hekman
  */
 class Parsedown extends \Parsedown

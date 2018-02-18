@@ -5,9 +5,6 @@ namespace Demontpx\ParsedownBundle\Twig;
 use Demontpx\ParsedownBundle\Parsedown;
 
 /**
- * Class ParsedownExtension
- *
- * @author    Bert Hekman <demontpx@gmail.com>
  * @copyright 2015 Bert Hekman
  */
 class ParsedownExtension extends \Twig_Extension

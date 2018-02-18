@@ -4,12 +4,15 @@ parameters:
     demontpx_parsedown.urls_linked: true
 
 services:
+    Demontpx\ParsedownBundle\Parsedown: "@demontpx_parsedown.parsedown"
+
     demontpx_parsedown.parsedown:
         class: Demontpx\ParsedownBundle\Parsedown
         calls:
             - ["setBreaksEnabled", ["%demontpx_parsedown.breaks_enabled%"]]
             - ["setMarkupEscaped", ["%demontpx_parsedown.markup_escaped%"]]
             - ["setUrlsLinked", ["%demontpx_parsedown.urls_linked%"]]
+        public: true
 
     demontpx_parsedown.controller:
         class: Demontpx\ParsedownBundle\Controller\ParsedownController
