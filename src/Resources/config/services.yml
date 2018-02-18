@@ -18,6 +18,8 @@ services:
         class: Demontpx\ParsedownBundle\Controller\ParsedownController
         arguments:
             - "@demontpx_parsedown.parsedown"
+        tags:
+            - { name: controller.service_arguments }
 
     demontpx_parsedown.twig.extension.parsedown:
         class: Demontpx\ParsedownBundle\Twig\ParsedownExtension
