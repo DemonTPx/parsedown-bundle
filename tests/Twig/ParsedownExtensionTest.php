@@ -13,7 +13,6 @@ class ParsedownExtensionTest extends TestCase
 {
     /** @var ParsedownExtension */
     private $extension;
-
     /** @var Mock|Parsedown */
     private $parsedown;
 

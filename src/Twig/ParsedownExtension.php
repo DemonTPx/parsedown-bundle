@@ -3,11 +3,13 @@
 namespace Demontpx\ParsedownBundle\Twig;
 
 use Demontpx\ParsedownBundle\Parsedown;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
 
 /**
  * @copyright 2015 Bert Hekman
  */
-class ParsedownExtension extends \Twig_Extension
+class ParsedownExtension extends AbstractExtension
 {
     /** @var Parsedown */
     private $parser;
@@ -20,8 +22,8 @@ class ParsedownExtension extends \Twig_Extension
     public function getFilters()
     {
         return [
-            new \Twig_Filter('markdown', [$this->parser, 'text'], ['is_safe' => ['html']]),
-            new \Twig_Filter('strip_markdown', [$this->parser, 'strip'], ['is_safe' => ['html']]),
+            new TwigFilter('markdown', [$this->parser, 'text'], ['is_safe' => ['html']]),
+            new TwigFilter('strip_markdown', [$this->parser, 'strip'], ['is_safe' => ['html']]),
         ];
     }
 }

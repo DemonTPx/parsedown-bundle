@@ -4,26 +4,21 @@ parameters:
     demontpx_parsedown.urls_linked: true
 
 services:
-    Demontpx\ParsedownBundle\Parsedown: "@demontpx_parsedown.parsedown"
-
-    demontpx_parsedown.parsedown:
-        class: Demontpx\ParsedownBundle\Parsedown
+    Demontpx\ParsedownBundle\Parsedown:
         calls:
-            - ["setBreaksEnabled", ["%demontpx_parsedown.breaks_enabled%"]]
-            - ["setMarkupEscaped", ["%demontpx_parsedown.markup_escaped%"]]
-            - ["setUrlsLinked", ["%demontpx_parsedown.urls_linked%"]]
+            - [setBreaksEnabled, ['%demontpx_parsedown.breaks_enabled%']]
+            - [setMarkupEscaped, ['%demontpx_parsedown.markup_escaped%']]
+            - [setUrlsLinked, ['%demontpx_parsedown.urls_linked%']]
         public: true
 
-    demontpx_parsedown.controller:
-        class: Demontpx\ParsedownBundle\Controller\ParsedownController
-        arguments:
-            - "@demontpx_parsedown.parsedown"
-        tags:
-            - { name: controller.service_arguments }
+    demontpx_parsedown.parsedown: '@Demontpx\ParsedownBundle\Parsedown'
 
-    demontpx_parsedown.twig.extension.parsedown:
-        class: Demontpx\ParsedownBundle\Twig\ParsedownExtension
+    Demontpx\ParsedownBundle\Controller\ParsedownController:
         arguments:
-            - "@demontpx_parsedown.parsedown"
-        tags:
-            - { name: twig.extension }
+            - '@Demontpx\ParsedownBundle\Parsedown'
+        tags: [controller.service_arguments]
+
+    Demontpx\ParsedownBundle\Twig\ParsedownExtension:
+        arguments:
+            - '@Demontpx\ParsedownBundle\Parsedown'
+        tags: [twig.extension]
