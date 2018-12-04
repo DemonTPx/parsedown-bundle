@@ -23,6 +23,11 @@ class DemontpxParsedownExtensionTest extends TestCase
             if ($name == 'service_container') {
                 continue;
             }
+            if (strpos($name, '\\') !== -1) {
+                $this->assertStringStartsWith('Demontpx\\ParsedownBundle\\', $name);
+
+                continue;
+            }
             $this->assertStringStartsWith($root, $name);
         }
         foreach (array_keys($container->getAliases()) as $name) {
