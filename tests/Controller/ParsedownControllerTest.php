@@ -2,15 +2,15 @@
 
 namespace Demontpx\ParsedownBundle\Controller;
 
+use Mockery\Adapter\Phpunit\MockeryTestCase;
 use Mockery\Mock;
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @copyright 2015 Bert Hekman
  */
-class ParsedownControllerTest extends TestCase
+class ParsedownControllerTest extends MockeryTestCase
 {
     public function test()
     {

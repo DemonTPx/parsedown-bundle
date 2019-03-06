@@ -2,6 +2,7 @@
 
 namespace Demontpx\ParsedownBundle\DependencyInjection;
 
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -12,8 +13,15 @@ class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('demontpx_parsedown');
+        $treeBuilder = new TreeBuilder('demontpx_parsedown');
+
+        // For BC with symfony/config < 4.2
+        if (method_exists($treeBuilder, 'getRootNode')) {
+            /** @var ArrayNodeDefinition $rootNode */
+            $rootNode = $treeBuilder->getRootNode();
+        } else {
+            $rootNode = $treeBuilder->root('demontpx_parsedown');
+        }
 
         $rootNode
             ->children()

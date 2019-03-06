@@ -3,13 +3,13 @@
 namespace Demontpx\ParsedownBundle\Twig;
 
 use Demontpx\ParsedownBundle\Parsedown;
+use Mockery\Adapter\Phpunit\MockeryTestCase;
 use Mockery\Mock;
-use PHPUnit\Framework\TestCase;
 
 /**
  * @copyright 2015 Bert Hekman
  */
-class ParsedownExtensionTest extends TestCase
+class ParsedownExtensionTest extends MockeryTestCase
 {
     /** @var ParsedownExtension */
     private $extension;

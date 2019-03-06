@@ -2,13 +2,13 @@
 
 namespace Demontpx\ParsedownBundle\DependencyInjection;
 
-use PHPUnit\Framework\TestCase;
+use Mockery\Adapter\Phpunit\MockeryTestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
  * @copyright 2015 Bert Hekman
  */
-class DemontpxParsedownExtensionTest extends TestCase
+class DemontpxParsedownExtensionTest extends MockeryTestCase
 {
     public function testRoot()
     {
