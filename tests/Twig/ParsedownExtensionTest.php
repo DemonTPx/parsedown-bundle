@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Demontpx\ParsedownBundle\Twig;
 
 use Demontpx\ParsedownBundle\Parsedown;
 use Mockery\Adapter\Phpunit\MockeryTestCase;
 use Mockery\Mock;
+use Twig\TwigFilter;
 
 /**
  * @copyright 2015 Bert Hekman
@@ -16,7 +17,7 @@ class ParsedownExtensionTest extends MockeryTestCase
     /** @var Mock|Parsedown */
     private $parsedown;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->parsedown = \Mockery::mock(Parsedown::class);
         $this->extension = new ParsedownExtension($this->parsedown);
@@ -25,8 +26,8 @@ class ParsedownExtensionTest extends MockeryTestCase
     public function testGetFilters()
     {
         $expectedResult = [
-            new \Twig_Filter('markdown', [$this->parsedown, 'text'], ['is_safe' => ['html']]),
-            new \Twig_Filter('strip_markdown', [$this->parsedown, 'strip'], ['is_safe' => ['html']]),
+            new TwigFilter('markdown', [$this->parsedown, 'text'], ['is_safe' => ['html']]),
+            new TwigFilter('strip_markdown', [$this->parsedown, 'strip'], ['is_safe' => ['html']]),
         ];
 
         $this->assertEquals($expectedResult, $this->extension->getFilters());
