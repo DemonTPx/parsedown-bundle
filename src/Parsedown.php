@@ -2,6 +2,9 @@
 
 namespace Demontpx\ParsedownBundle;
 
+use function html_entity_decode;
+use function strip_tags;
+
 /**
  * @copyright 2015 Bert Hekman
  */

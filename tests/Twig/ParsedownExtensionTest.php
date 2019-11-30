@@ -12,8 +12,7 @@ use Twig\TwigFilter;
  */
 class ParsedownExtensionTest extends MockeryTestCase
 {
-    /** @var ParsedownExtension */
-    private $extension;
+    private ParsedownExtension $extension;
     /** @var Mock|Parsedown */
     private $parsedown;
 

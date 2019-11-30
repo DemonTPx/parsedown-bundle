@@ -2,6 +2,7 @@
 
 namespace Demontpx\ParsedownBundle\Controller;
 
+use Parsedown;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -10,10 +11,9 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class ParsedownController
 {
-    /** @var \Parsedown */
-    private $parsedown;
+    private Parsedown $parsedown;
 
-    public function __construct(\Parsedown $parsedown)
+    public function __construct(Parsedown $parsedown)
     {
         $this->parsedown = $parsedown;
     }

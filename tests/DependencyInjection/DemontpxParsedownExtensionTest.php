@@ -4,6 +4,8 @@ namespace Demontpx\ParsedownBundle\DependencyInjection;
 
 use Mockery\Adapter\Phpunit\MockeryTestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use function array_keys;
+use function strpos;
 
 /**
  * @copyright 2015 Bert Hekman

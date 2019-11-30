@@ -11,8 +11,7 @@ use Twig\TwigFilter;
  */
 class ParsedownExtension extends AbstractExtension
 {
-    /** @var Parsedown */
-    private $parser;
+    private Parsedown $parser;
 
     public function __construct(Parsedown $parser)
     {
