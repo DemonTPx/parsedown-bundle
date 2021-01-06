@@ -11,7 +11,7 @@
         "psr-4": { "Demontpx\\ParsedownBundle\\": "tests/" }
     },
     "require": {
-        "php": "^7.4",
+        "php": ">=7.4",
         "symfony/config": "^4.4|^5.0",
         "symfony/http-kernel": "^4.4|^5.0",
         "symfony/dependency-injection": "^4.4|^5.0",
